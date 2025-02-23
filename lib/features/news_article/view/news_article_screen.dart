@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/repositories/news_list/models/news_article.dart';
 
+@RoutePage()
 class NewsArticleScreen extends StatelessWidget {
   final NewsArticle article;
 
