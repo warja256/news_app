@@ -23,10 +23,17 @@ class NewsArticleScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(article.title,
-                style: Theme.of(context).textTheme.headlineSmall),
+            Text(
+              article.title,
+              style: Theme.of(context).textTheme.headlineSmall,
+              textAlign: TextAlign.justify,
+            ),
             const SizedBox(height: 10),
-            Text(article.body, style: Theme.of(context).textTheme.bodyMedium),
+            Divider(
+              color: Theme.of(context).dividerColor,
+            ),
+            const SizedBox(height: 10),
+            Text(article.body, style: Theme.of(context).textTheme.bodySmall),
           ],
         ),
       ),

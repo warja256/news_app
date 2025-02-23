@@ -11,6 +11,7 @@ class NewsApp extends StatelessWidget {
       title: 'NewsApp',
       theme: lightTheme,
       home: NewsListScreen(),
+      debugShowCheckedModeBanner: false,
       // routes: Placeholder(),
     );
   }

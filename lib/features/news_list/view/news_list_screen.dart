@@ -30,12 +30,14 @@ class _NewsListScreenState extends State<NewsListScreen> {
 
           List<NewsArticle> newsList = snapshot.data!;
 
-          return ListView.builder(
+          return ListView.separated(
             itemCount: newsList.length,
             itemBuilder: (context, index) {
               NewsArticle article = newsList[index];
               return NewsListTile(article: article);
             },
+            separatorBuilder: (_, __) =>
+                Divider(color: Theme.of(context).dividerColor),
           );
         },
       ),

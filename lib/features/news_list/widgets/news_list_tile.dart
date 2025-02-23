@@ -14,7 +14,11 @@ class NewsListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(article.title, style: Theme.of(context).textTheme.bodyMedium),
-      subtitle: Text(article.body.substring(0, 100) + '...'),
+      subtitle: Text(
+        article.body.substring(0, 100) + '...',
+        style: Theme.of(context).textTheme.displaySmall,
+        textAlign: TextAlign.justify,
+      ),
       onTap: () {
         Navigator.push(
           context,
