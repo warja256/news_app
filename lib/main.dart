@@ -32,7 +32,7 @@ void main() {
     FlutterError.onError =
         (details) => GetIt.I<Talker>().handle(details.exception, details.stack);
 
-    runApp(const MyApp());
+    runApp(const NewsApp());
   },
       // Обработчик ошибок зоны
       (e, st) => GetIt.I<Talker>().handle(e, st));
