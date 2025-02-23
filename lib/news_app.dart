@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/theme/theme.dart';
+import 'features/news_list/view/news_list_screen.dart';
 
 class NewsApp extends StatelessWidget {
   const NewsApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'NewsApp',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: Placeholder(),
+      theme: lightTheme,
+      home: NewsListScreen(),
       // routes: Placeholder(),
     );
   }
