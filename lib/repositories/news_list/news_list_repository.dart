@@ -4,7 +4,8 @@ import 'package:http/http.dart' as http;
 import 'models/news_article.dart';
 
 class NewsListRepository {
-  static const String _baseUrl = 'https://jsonplaceholder.typicode.com/posts';
+  static const String _baseUrl =
+      'https://news-app-sigma-ashen.vercel.app/posts';
 
   Future<List<NewsArticle>> fetchNews() async {
     final response = await http.get(Uri.parse(_baseUrl));
