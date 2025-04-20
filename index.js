@@ -15,6 +15,9 @@ app.get("/posts", (req, res) => {
 
     try {
       const posts = JSON.parse(data); 
+      const formatted = JSON.stringify(posts, null, 2);
+      res.setHeader("Content-Type", "application/json");
+      res.send(formatted);
       res.status(200).json(posts);  
     } catch (parseError) {
       res.status(500).json({ message: "Error parsing data" });
