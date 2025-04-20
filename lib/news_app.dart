@@ -27,21 +27,19 @@ class NewsApp extends StatelessWidget {
         ),
       ],
       child: ChangeNotifierProvider(
-        create: (_) => ThemeProvider(), // Создаем и передаем ThemeProvider
+        create: (_) => ThemeProvider(),
         child: Consumer<ThemeProvider>(
-          // Используем Consumer для обновления темы
           builder: (context, themeProvider, child) {
             return MaterialApp.router(
               title: 'NewsApp',
-              theme: themeProvider.isDarkMode
-                  ? darkTheme
-                  : lightTheme, // Применяем выбранную тему
+              theme: themeProvider.isDarkMode ? darkTheme : lightTheme,
               debugShowCheckedModeBanner: false,
-              routerConfig: _appRouter.config(
+              routerDelegate: _appRouter.delegate(
                 navigatorObservers: () => [
                   TalkerRouteObserver(GetIt.I<Talker>()),
                 ],
               ),
+              routeInformationParser: _appRouter.defaultRouteParser(),
             );
           },
         ),

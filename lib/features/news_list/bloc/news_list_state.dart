@@ -8,9 +8,9 @@ abstract class NewsListState extends Equatable {
   List<Object?> get props => [];
 }
 
-class NewsListInitial extends NewsListState {}
+class NewsListInitial extends NewsListState {} // Новости ещё не загружены
 
-class NewsListLoading extends NewsListState {}
+class NewsListLoading extends NewsListState {} // Состояни загрузки данных
 
 class NewsListLoaded extends NewsListState {
   final List<NewsArticle> newsList;
