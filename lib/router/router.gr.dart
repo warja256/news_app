@@ -25,10 +25,10 @@ class NewsArticleRoute extends _i3.PageRouteInfo<NewsArticleRouteArgs> {
     required _i5.NewsArticle article,
     List<_i3.PageRouteInfo>? children,
   }) : super(
-         NewsArticleRoute.name,
-         args: NewsArticleRouteArgs(key: key, article: article),
-         initialChildren: children,
-       );
+          NewsArticleRoute.name,
+          args: NewsArticleRouteArgs(key: key, article: article),
+          initialChildren: children,
+        );
 
   static const String name = 'NewsArticleRoute';
 
@@ -36,7 +36,12 @@ class NewsArticleRoute extends _i3.PageRouteInfo<NewsArticleRouteArgs> {
     name,
     builder: (data) {
       final args = data.argsAs<NewsArticleRouteArgs>();
-      return _i1.NewsArticleScreen(key: args.key, article: args.article);
+      return _i1.NewsArticleScreen(
+        key: args.key,
+        article: args.article,
+        reactions: {},
+        tileKey: _i4.GlobalKey(),
+      );
     },
   );
 }
@@ -58,7 +63,7 @@ class NewsArticleRouteArgs {
 /// [_i2.NewsListScreen]
 class NewsListRoute extends _i3.PageRouteInfo<void> {
   const NewsListRoute({List<_i3.PageRouteInfo>? children})
-    : super(NewsListRoute.name, initialChildren: children);
+      : super(NewsListRoute.name, initialChildren: children);
 
   static const String name = 'NewsListRoute';
 

@@ -5,12 +5,15 @@ class NewsArticle extends Equatable {
   final int userId;
   final String title;
   final String body;
+  String? reaction;
 
-  const NewsArticle(
-      {required this.id,
-      required this.userId,
-      required this.title,
-      required this.body});
+  NewsArticle({
+    required this.id,
+    required this.userId,
+    required this.title,
+    required this.body,
+    this.reaction,
+  });
 
   @override
   List<Object?> get props => [id, userId, title, body];
