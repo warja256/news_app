@@ -103,6 +103,16 @@ class _NewsListTileState extends State<NewsListTile> {
               }
             },
           ),
+          if (widget.article.tags.isNotEmpty)
+            Wrap(
+                spacing: 12,
+                children: widget.article.tags.map((tag) {
+                  return Chip(
+                    label: Text(tag.name),
+                    backgroundColor: Color(_hexToColor(tag.color)),
+                    labelStyle: TextStyle(color: Colors.white),
+                  );
+                }).toList()),
           if (reactions.isNotEmpty)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -134,4 +144,9 @@ class _NewsListTileState extends State<NewsListTile> {
       ),
     );
   }
+}
+
+int _hexToColor(String hexColor) {
+  hexColor = hexColor.replaceAll("#", "");
+  return int.parse("FF$hexColor", radix: 16); // FF — 100% непрозрачность
 }
