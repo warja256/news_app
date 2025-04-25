@@ -111,6 +111,7 @@ class _NewsArticleScreenState extends State<NewsArticleScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: Wrap(
                     spacing: 12,
+                    runSpacing: 4,
                     children: sortedReactions
                         .map((entry) => GestureDetector(
                               onTap: () {

@@ -25,6 +25,7 @@ class TagWidget extends StatelessWidget {
             visualDensity: VisualDensity(horizontal: -4, vertical: -4),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
+              side: BorderSide.none,
             ),
           );
         }).toList());

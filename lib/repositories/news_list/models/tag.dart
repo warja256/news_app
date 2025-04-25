@@ -10,6 +10,13 @@ class Tag {
       color: json['color'],
     );
   }
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Tag && runtimeType == other.runtimeType && name == other.name;
+
+  @override
+  int get hashCode => name.hashCode;
 
   Map<String, dynamic> toJson() {
     return {
