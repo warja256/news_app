@@ -14,13 +14,25 @@ final lightTheme = ThemeData(
   dividerColor: Color(0xFF1877F2).withOpacity(0.2),
   textTheme: TextTheme(
     bodyMedium: TextStyle(
-        color: Colors.black, fontSize: 20, fontWeight: FontWeight.w700),
+        color: Colors.black,
+        fontSize: 20,
+        fontWeight: FontWeight.w700,
+        height: 1.2),
     displaySmall: TextStyle(
-        color: Colors.black, fontSize: 14, fontWeight: FontWeight.w600),
+        color: Colors.black,
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        height: 1.2),
     headlineSmall: TextStyle(
-        color: Colors.black, fontSize: 24, fontWeight: FontWeight.w700),
+        color: Colors.black,
+        fontSize: 24,
+        fontWeight: FontWeight.w700,
+        height: 1.2),
     bodySmall: TextStyle(
-        color: Colors.black, fontSize: 18, fontWeight: FontWeight.w600),
+        color: Colors.black,
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+        height: 1.2),
   ),
 );
 

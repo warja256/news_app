@@ -10,4 +10,11 @@ class Tag {
       color: json['color'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'color': color,
+    };
+  }
 }

@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_reactions/flutter_chat_reactions.dart';
 import 'package:flutter_chat_reactions/utilities/default_data.dart';
+import 'package:news_app/features/news_list/widgets/reaction_widget.dart';
+import 'package:news_app/features/news_list/widgets/tag_widget.dart';
 import 'package:news_app/repositories/news_list/models/news_article.dart';
 
 @RoutePage()
@@ -101,9 +103,12 @@ class _NewsArticleScreenState extends State<NewsArticleScreen> {
               const SizedBox(height: 10),
               Text(widget.article.body,
                   style: Theme.of(context).textTheme.bodySmall),
+              const SizedBox(height: 10),
+              if (widget.article.tags.isNotEmpty)
+                TagWidget(tags: widget.article.tags),
               if (widget.reactions.isNotEmpty)
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 0.0),
+                  padding: const EdgeInsets.symmetric(vertical: 10),
                   child: Wrap(
                     spacing: 12,
                     children: sortedReactions
@@ -118,11 +123,8 @@ class _NewsArticleScreenState extends State<NewsArticleScreen> {
                                   }
                                 });
                               },
-                              child: Chip(
-                                label: Text(
-                                  '${entry.key} ${entry.value}',
-                                  style: const TextStyle(fontSize: 18),
-                                ),
+                              child: ReactionWidget(
+                                entry: entry,
                               ),
                             ))
                         .toList(),

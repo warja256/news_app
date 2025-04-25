@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_reactions/flutter_chat_reactions.dart';
 import 'package:flutter_chat_reactions/utilities/default_data.dart';
 import 'package:news_app/features/news_article/view/news_article_screen.dart';
+import 'package:news_app/features/news_list/widgets/reaction_widget.dart';
+import 'package:news_app/features/news_list/widgets/tag_widget.dart';
 import 'package:news_app/repositories/news_list/models/news_article.dart';
 
 class NewsListTile extends StatefulWidget {
@@ -80,11 +82,15 @@ class _NewsListTileState extends State<NewsListTile> {
               widget.article.title,
               style: Theme.of(context).textTheme.bodyMedium,
             ),
-            subtitle: Text(
-              widget.article.body.substring(0, 100) + '...',
-              style: Theme.of(context).textTheme.displaySmall,
-              textAlign: TextAlign.justify,
+            subtitle: Padding(
+              padding: EdgeInsets.only(top: 10),
+              child: Text(
+                widget.article.body.substring(0, 30) + '...',
+                style: Theme.of(context).textTheme.displaySmall,
+                textAlign: TextAlign.justify,
+              ),
             ),
+            contentPadding: EdgeInsets.symmetric(vertical: 4, horizontal: 16),
             onTap: () async {
               final result = await Navigator.push<Map<String, int>>(
                 context,
@@ -104,18 +110,16 @@ class _NewsListTileState extends State<NewsListTile> {
             },
           ),
           if (widget.article.tags.isNotEmpty)
-            Wrap(
-                spacing: 12,
-                children: widget.article.tags.map((tag) {
-                  return Chip(
-                    label: Text(tag.name),
-                    backgroundColor: Color(_hexToColor(tag.color)),
-                    labelStyle: TextStyle(color: Colors.white),
-                  );
-                }).toList()),
-          if (reactions.isNotEmpty)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: TagWidget(
+                tags: widget.article.tags,
+              ),
+            ),
+          if (reactions.isNotEmpty)
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
               child: Wrap(
                 spacing: 12,
                 children: sortedReactions
@@ -130,11 +134,8 @@ class _NewsListTileState extends State<NewsListTile> {
                               }
                             });
                           },
-                          child: Chip(
-                            label: Text(
-                              '${entry.key} ${entry.value}',
-                              style: const TextStyle(fontSize: 18),
-                            ),
+                          child: ReactionWidget(
+                            entry: entry,
                           ),
                         ))
                     .toList(),
@@ -144,9 +145,4 @@ class _NewsListTileState extends State<NewsListTile> {
       ),
     );
   }
-}
-
-int _hexToColor(String hexColor) {
-  hexColor = hexColor.replaceAll("#", "");
-  return int.parse("FF$hexColor", radix: 16); // FF — 100% непрозрачность
 }

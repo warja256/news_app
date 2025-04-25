@@ -11,10 +11,29 @@ class NewsListRepository {
     final response = await http.get(Uri.parse(_baseUrl));
 
     if (response.statusCode == 200) {
-      List<dynamic> jsonData = jsonDecode(response.body);
-      return jsonData.map((item) => NewsArticle.fromJson(item)).toList();
+      print('Response body: ${response.body}');
+
+      try {
+        // Декодируем строку как список
+        dynamic jsonData = jsonDecode(response.body);
+
+        // Если jsonData это строка, превращаем её в список
+        if (jsonData is String) {
+          jsonData = jsonDecode(
+              jsonData); // Попробуем еще раз декодировать как строку JSON
+        }
+
+        // Проверяем, что jsonData действительно является списком
+        if (jsonData is List) {
+          return jsonData.map((item) => NewsArticle.fromJson(item)).toList();
+        } else {
+          throw Exception('Получены некорректные данные');
+        }
+      } catch (e) {
+        throw Exception('Ошибка при декодировании JSON: $e');
+      }
     } else {
-      throw Exception('Failed to load news');
+      throw Exception('Не удалось загрузить новости');
     }
   }
 }
